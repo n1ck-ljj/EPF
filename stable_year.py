@@ -29,7 +29,7 @@ total_dividend = 0
 
 counter = 0
 while (counter <= 11):
-    if (counter == 0 or counter == 2 or counter == 4 or counter == 6 or counter == 7 or counter == 9 or counter == 11):
+    if (counter == 0, 2, 4, 6, 7, 9, 11):
         days = 31
         aggregate_balance = (first_of_jan * days) + (contribution_of_month * constant)
         calculation_equation = (aggregate_balance * dividend_rate) / leap_year_check.days_of_year
