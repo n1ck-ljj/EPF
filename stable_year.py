@@ -12,15 +12,24 @@ def leap_year_check(year):
     else:
         leap_year_check.days_of_year = 365
 
+# The rate based on salary seen on KWSP website
+def contribution_rate_shortcut(salary):
+    if salary <= 5000:
+        contribution_rate_shortcut.employer_contribution_rate = float(13/100)
+    else: 
+        contribution_rate_shortcut.employer_contribution_rate = float(12/100)
+
 def static_year():        
     year = int(input("Enter the year:"))
     leap_year_check(year)
     salary = float(input("Enter your salary: "))
+    contribution_rate_shortcut(salary)
     dividend_rate = float(input("Enter dividend rate of the year: ")) / 100
     employee_contribution = float(input("Enter your contribution (%): ")) / 100
-    employer_contribution = float(input("Enter employer contribution (%): ")) / 100
+    #employer_contribution = float(input("Enter employer contribution (%): ")) / 100
+    print("Based on your salary, the mandatory employer contribution rate is", contribution_rate_shortcut.employer_contribution_rate)
     opening_balance = float(input("Enter opening balance of year: "))
-    monthly_contribution = salary * (employee_contribution + employer_contribution)
+    monthly_contribution = salary * (employee_contribution + contribution_rate_shortcut.employer_contribution_rate)
     constant = 1
     list_of_months = list_of_months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     # for adding up monthly
@@ -60,7 +69,13 @@ def static_year():
         total_dividend = total_dividend + calculation_equation
         rounded_value = round(total_dividend, 2)
         total_amount = rounded_value + first_of_following_month
+        account_one_total = total_amount * 0.7
+        rounded_account_one = round(account_one_total, 2)
+        account_two_total = total_amount * 0.3
+        rounded_account_two = round(account_two_total, 2)
 
     print("Total dividend is RM", rounded_value)
     print("Total accounts balance is RM", first_of_following_month)
     print("Total amount after dividend at end of", year, "is RM", total_amount)
+    print("Account 1 total amount is RM", rounded_account_one)
+    print("Account 2 total amount is RM", rounded_account_two)
